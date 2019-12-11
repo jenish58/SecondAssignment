@@ -36,23 +36,28 @@ public class SimpleInterest extends Fragment implements View.OnClickListener {
         View view = inflater.inflate(R.layout.fragment_simple_interest, container, false);
 
         etPrincipal = view.findViewById(R.id.etPrincipal);
-        etTime = view.findViewById(R.id.etTime);
         etRate = view.findViewById(R.id.etRate);
+        etTime = view.findViewById(R.id.etTime);
+
         btnSimpleInterest = view.findViewById(R.id.btnSimpleInterest);
         tvResult = view.findViewById(R.id.tvResult);
 
-        btnSimpleInterest.setOnClickListener(this);
+       btnSimpleInterest.setOnClickListener(this);
         return view;
     }
 
     @Override
     public void onClick(View v) {
-        float principal = Integer.parseInt(etPrincipal.getText().toString());
-        float time = Integer.parseInt(etTime.getText().toString());
-        float rate = Integer.parseInt(etRate.getText().toString());
-        float simpleinterest = ((principal * time * rate) / 100);
+        float principle, time, rate, result;
 
-        tvResult.setText("Simple Interest");
+        principle = Float.parseFloat(etPrincipal.getText().toString());
+        time = Float.parseFloat(etTime.getText().toString());
+        rate = Float.parseFloat(etRate.getText().toString());
+
+        result = (principle * time * rate)/100;
+
+        tvResult.append("The SI of priciple Rs."+ principle + ", time "+ time +"yrs and rate "+ rate + " is Rs." +result+ ".\n");
+
 
     }
 }
